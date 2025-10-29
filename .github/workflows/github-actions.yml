@@ -30,12 +30,12 @@ jobs:
 
 
       - name: Terraform Init
-        run: terraform -chdir=terraform init
+        run: terraform  init
         working-directory: ./terraform
 
           
       - name: Terraform Apply
-        run: terraform -chdir=terraform apply -auto-approve
+        run: terraform apply -auto-approve
         working-directory: ./terraform
    
   
