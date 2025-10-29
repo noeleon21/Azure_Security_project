@@ -21,14 +21,3 @@ terraform {
       }
 }
 
-provider "azurerm" {
-  # Configuration options
-}
-
-provider "azuread" {
-  # Configuration options
-}
-
-provider "random" {
-  # Configuration options
-}
