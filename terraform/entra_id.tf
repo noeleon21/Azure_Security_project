@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "azure_security_rg" {
   name     = var.resource_group_name
-  location = "US East"
+  location = "East US"
 }
 
 data "azuread_domains" "primary" {
