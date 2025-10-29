@@ -22,4 +22,6 @@ terraform {
       }
 }
 
-
+provider "azurerm" {
+  features {} # This block is required, even if empty
+}
