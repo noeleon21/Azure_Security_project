@@ -32,10 +32,10 @@ resource "azuread_user" "users" {
 }
 
 
-resource "azurerm_role_assignment" "example" {
-  for_each = azuread_user.users
-  scope               = azurerm_linux_virtual_machine.my_terraform_vm.id
-  role_definition_name = "Reader"
-  principal_id         = each.value.object_id
-}
+# resource "azurerm_role_assignment" "example" {
+#   for_each = azuread_user.users
+#   scope               = azurerm_linux_virtual_machine.my_terraform_vm.id
+#   role_definition_name = "Reader"
+#   principal_id         = each.value.object_id
+# }
 
