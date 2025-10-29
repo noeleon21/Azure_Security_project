@@ -1,7 +1,7 @@
-resource "azurerm_resource_group" "azure_security_rg" {
-  name     = var.resource_group_name
-  location = "US East"
-}
+# resource "azurerm_resource_group" "azure_security_rg" {
+#   name     = var.resource_group_name
+#   location = "US East"
+# }
 
 # resource "azurerm_network_security_group" "azure_security_nsg" {
 #   name                = "azure-security-nsg"
