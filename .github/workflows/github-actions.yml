@@ -27,7 +27,9 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
          
-
+      - name: Restore users
+        run: |
+             echo "${{ secrets.USERS_JSON_B64 }}" | base64 -d > user.json
 
       - name: Terraform Init
         run: terraform  init

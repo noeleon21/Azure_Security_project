@@ -1,0 +1,82 @@
+[
+  {
+    "firstName": "Ethan",
+    "lastName": "Coleman",
+    "email": "ethan.coleman@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "ethan.coleman",
+    "address": "12 Willow Street, Brisbane QLD 4000",
+    "displayName": "Ethan Coleman"
+  },
+  {
+    "firstName": "Sofia",
+    "lastName": "Nguyen",
+    "email": "sofia.nguyen@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "sofia.nguyen",
+    "address": "89 Ocean Avenue, Sydney NSW 2000",
+    "displayName": "Sofia Nguyen"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Patel",
+    "email": "liam.patel@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "liam.patel",
+    "address": "45 Sunset Road, Melbourne VIC 3000",
+    "displayName": "Liam Patel"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Wright",
+    "email": "isabella.wright@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "isabella.wright",
+    "address": "77 Maple Drive, Perth WA 6000",
+    "displayName": "Isabella Wright"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Singh",
+    "email": "noah.singh@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "noah.singh",
+    "address": "31 Riverbank Crescent, Adelaide SA 5000",
+    "displayName": "Noah Singh"
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Harris",
+    "email": "mia.harris@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "mia.harris",
+    "address": "10 Greenway Blvd, Canberra ACT 2600",
+    "displayName": "Mia Harris"
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "Brown",
+    "email": "lucas.brown@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "lucas.brown",
+    "address": "4 Horizon Court, Hobart TAS 7000",
+    "displayName": "Lucas Brown"
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Zhou",
+    "email": "amelia.zhou@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "amelia.zhou",
+    "address": "98 Pine Street, Darwin NT 0800",
+    "displayName": "Amelia Zhou"
+  },
+  {
+    "firstName": "Oliver",
+    "lastName": "Johnson",
+    "email": "oliver.johnson@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "oliver.johnson",
+    "address": "55 Forest Lane, Newcastle NSW 2300",
+    "displayName": "Oliver Johnson"
+  },
+  {
+    "firstName": "Grace",
+    "lastName": "Martinez",
+    "email": "grace.martinez@noelgensgmail.onmicrosoft.com",
+    "mailNickname": "grace.martinez",
+    "address": "22 Bayview Terrace, Gold Coast QLD 4217",
+    "displayName": "Grace Martinez"
+  }
+]
