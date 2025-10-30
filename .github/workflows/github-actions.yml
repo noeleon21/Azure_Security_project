@@ -54,4 +54,4 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           TF_VAR_ssh_public_key: ${{ secrets.SSHKEY }}
           TF_VAR_username: ${{ secrets.USERNAME }}
-        run: terraform apply -auto-destroy -lock-timeout=60s
+        run: terraform destroy -auto-approve -lock-timeout=60s
