@@ -40,6 +40,12 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         run: terraform init
 
+      - name: Try to unlock Terraform state
+        continue-on-error: true
+        run: |
+          echo "Attempting to unlock Terraform state..."
+          terraform -chdir=terraform force-unlock -force b497c9bf-ea2c-e408-548a-1273b895b344 || echo "No existing lock found"
+
       - name: Terraform Apply
         working-directory: ./terraform
         env:
