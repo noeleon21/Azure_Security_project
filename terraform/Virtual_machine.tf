@@ -3,7 +3,7 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
   name                  = "LinuxVM"
   location              = azurerm_resource_group.azure_security_rg.location
   resource_group_name   = azurerm_resource_group.azure_security_rg.name
-  network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
+  network_interface_ids = [azurerm_network_interface.network_interface.id]
   size                  = "Standard_B1s"
   custom_data = base64decode(file("install_webserver.sh"))
 
