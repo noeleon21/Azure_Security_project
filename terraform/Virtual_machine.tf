@@ -6,6 +6,7 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
   network_interface_ids = [azurerm_network_interface.network_interface.id]
   size                  = "Standard_B1s"
   custom_data = base64encode(file("install_webserver.sh"))
+  admin_username = var.username
 
 admin_ssh_key {
   username   = var.username
