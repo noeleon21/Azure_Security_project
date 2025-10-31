@@ -32,10 +32,29 @@ resource "azuread_user" "users" {
 }
 
 
-# resource "azurerm_role_assignment" "example" {
-#   for_each = azuread_user.users
-#   scope               = azurerm_linux_virtual_machine.my_terraform_vm.id
-#   role_definition_name = "Reader"
-#   principal_id         = each.value.object_id
-# }
+resource "azurerm_role_assignment" "example" {
+  for_each = azuread_user.users
+  scope               = azurerm_linux_virtual_machine.my_terraform_vm.id
+  role_definition_name = azurerm_role_definition.custom_role.role_definition_resource_id
+  principal_id         = each.value.object_id
+}
 
+data "azurerm_subscription" "primary" {
+}
+
+resource "azurerm_role_definition" "custom_role" {
+  name        = "my-custom-role"
+  scope       = data.azurerm_subscription.primary.id
+  description = "This is a custom role created via Terraform"
+
+  permissions {
+    actions     = ["Microsoft.Compute/*/read",
+                   "Microsoft.Network/*/read",
+                   "Microsoft.Resources/*/read"]
+    not_actions = []
+  }
+  assignable_scopes = [
+    data.azurerm_subscription.primary.id,
+  ]
+  
+}
