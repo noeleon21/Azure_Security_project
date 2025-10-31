@@ -35,7 +35,7 @@ resource "azuread_user" "users" {
 resource "azurerm_role_assignment" "example" {
   for_each = azuread_user.users
   scope               = azurerm_linux_virtual_machine.my_terraform_vm.id
-  role_definition_name = azurerm_role_definition.custom_role.role_definition_resource_id
+  role_definition_id = azurerm_role_definition.custom_role.role_definition_resource_id
   principal_id         = each.value.object_id
 }
 
