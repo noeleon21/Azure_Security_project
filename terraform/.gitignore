@@ -4,5 +4,3 @@ terraform.tfstate
 *.pem
 *.pub
 *.tfvars
-users.json
-users.json.64
