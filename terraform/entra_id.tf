@@ -7,8 +7,13 @@ data "azuread_domains" "primary" {
   only_initial = true
 }
 
+variable "users_json_b64" {
+  description = "Base64 encoded JSON array of users to create"
+  type        = string
+}
+
 locals {
-  user_list = jsondecode(file("users.json"))
+  user_list = jsondecode(base64decode(var.users_json_b64))
   user_map = { for user in local.user_list : user.displayName => user  }
 }
 output "name" {
