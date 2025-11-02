@@ -44,7 +44,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Attempting to unlock Terraform state..."
-          terraform -chdir=terraform force-unlock -force eb0c4f51-f20b-f819-43ca-d516721bd612 || echo "No existing lock found"
+          terraform -chdir=terraform force-unlock -force  9691644e-5935-2e66-abc8-f0944d5f1fb0|| echo "No existing lock found"
 
       - name: Terraform Apply
         working-directory: ./terraform
