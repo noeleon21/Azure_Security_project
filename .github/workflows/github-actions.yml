@@ -55,4 +55,4 @@ jobs:
           TF_VAR_ssh_public_key: ${{ secrets.SSHKEY }}
           TF_VAR_username: ${{ secrets.USERNAME }}
           TF_VAR_users_json_b64: ${{ secrets.USERS_JSON_B64 }}
-        run: terraform apply -auto-approve -lock-timeout=60s
+        run: terraform destroy -auto-approve -lock-timeout=60s
