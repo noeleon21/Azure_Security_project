@@ -82,7 +82,7 @@ resource "azurerm_federated_identity_credential" "github_oidc" {
   subject   = "repo:noeleon21/YOUR_REPOSITORY:ref:refs/heads/main"
 }
 
-output "user_map" {
-  value     = local.user_map
-  sensitive = true
-}
+# output "user_map" {
+#   value     = local.user_map
+#   sensitive = true
+# }
