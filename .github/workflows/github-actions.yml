@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -24,35 +24,25 @@ jobs:
       - name: Azure login
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-      - name: Restore users file
-        run: |
-          echo "${{ secrets.USERS_JSON_B64 }}" | base64 --decode > users.json
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
 
       - name: Terraform Init
         working-directory: ./terraform
         env:
-          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC:        true
+          ARM_CLIENT_ID:       ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_TENANT_ID:       ${{ secrets.AZURE_TENANT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        run: terraform init -reconfigure
-
-      - name: Try to unlock Terraform state
-        continue-on-error: true
-        run: |
-          echo "Attempting to unlock Terraform state..."
-          terraform -chdir=terraform force-unlock -force  9691644e-5935-2e66-abc8-f0944d5f1fb0|| echo "No existing lock found"
+        run: terraform init
 
       - name: Terraform Apply
         working-directory: ./terraform
         env:
-          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          TF_VAR_ssh_public_key: ${{ secrets.SSHKEY }}
-          TF_VAR_username: ${{ secrets.USERNAME }}
-          TF_VAR_users_json_b64: ${{ secrets.USERS_JSON_B64 }}
-        run: terraform destroy -auto-approve -lock-timeout=60s
+          ARM_USE_OIDC:           true
+          ARM_CLIENT_ID:          ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_TENANT_ID:          ${{ secrets.AZURE_TENANT_ID }}
+          ARM_SUBSCRIPTION_ID:    ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          TF_VAR_users_json_b64:  ${{ secrets.USERS_JSON_B64 }}
+        run: terraform apply -auto-approve
