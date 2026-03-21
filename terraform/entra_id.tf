@@ -1,8 +1,3 @@
-# variable "resource_group_name" {
-#   description = "Name of the resource group"
-#   type        = string
-# }
-
 variable "location" {
   description = "Azure region"
   type        = string
@@ -17,7 +12,7 @@ variable "users_json_b64" {
 
 locals {
   user_list = jsondecode(base64decode(var.users_json_b64))
-  user_map  = { for user in local.user_list : user.displayName => user }
+  user_map  = { for i, user in local.user_list : tostring(i) => user }
 }
 
 data "azuread_domains" "primary" {
@@ -80,12 +75,11 @@ resource "azurerm_user_assigned_identity" "github_identity" {
 }
 
 resource "azurerm_federated_identity_credential" "github_oidc" {
-  name                = "github_actions"
-  resource_group_name = azurerm_resource_group.azure_security_rg.name
-  parent_id           = azurerm_user_assigned_identity.github_identity.id
-  issuer              = "https://token.actions.githubusercontent.com"
-  audience            = ["api://AzureADTokenExchange"]
-  subject             = "repo:YOUR_GITHUB_USERNAME/YOUR_REPOSITORY:ref:refs/heads/main"
+  name      = "github_actions"
+  parent_id = azurerm_user_assigned_identity.github_identity.id
+  issuer    = "https://token.actions.githubusercontent.com"
+  audience  = ["api://AzureADTokenExchange"]
+  subject   = "repo:noeleon21/YOUR_REPOSITORY:ref:refs/heads/main"
 }
 
 output "user_map" {
