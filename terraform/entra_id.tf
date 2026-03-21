@@ -7,7 +7,7 @@ variable "location" {
 variable "users_json_b64" {
   description = "Base64 encoded JSON array of users to create"
   type        = string
-  sensitive   = true
+  # sensitive   = true
 }
 
 locals {
