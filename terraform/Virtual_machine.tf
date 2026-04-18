@@ -1,41 +1,35 @@
-# # Create virtual machine
-# resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
-#   name                  = "LinuxVM"
-#   location              = azurerm_resource_group.azure_security_rg.location
-#   resource_group_name   = azurerm_resource_group.azure_security_rg.name
-#   network_interface_ids = [azurerm_network_interface.network_interface.id]
-#   size                  = "Standard_B1s"
-#   custom_data = base64encode(file("install_webserver.sh"))
-#   admin_username = var.username
+# Create virtual machine
+resource "azurerm_windows_virtual_machine" "my_terraform_vm" {
+  name                  = "WindowsVM"
+  location              = azurerm_resource_group.azure_security_rg.location
+  resource_group_name   = azurerm_resource_group.azure_security_rg.name
+  network_interface_ids = [azurerm_network_interface.network_interface.id]
+  size                  = "Standard_B1s"  # Free tier eligible size
 
-# admin_ssh_key {
-#   username   = var.username
-#   public_key = var.ssh_public_key
-# }
-#   os_disk {
-#     name                 = "myOsDisk"
-#     caching              = "ReadWrite"
-#     storage_account_type = "Standard_LRS"
-#   }
+  admin_username = var.username
+  admin_password = var.admin_password
 
-#   source_image_reference {
-#     publisher = "Canonical"
-#     offer     = "0001-com-ubuntu-server-jammy"
-#     sku       = "22_04-lts-gen2"
-#     version   = "latest"
-#   }
+  os_disk {
+    name                 = "myOsDisk"
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
 
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+}
 
-# }
+variable "username" {
+  description = "Username for the Windows VM"
+  type        = string
+}
 
-# variable "ssh_public_key" {
-#     description = "SSH public key for VM access"
-#     type        = string
-   
-# }
-
-# variable "username" {   
-#     description = "Username for the VM"
-#     type        = string
-  
-# }
+variable "admin_password" {
+  description = "Admin password for the Windows VM"
+  type        = string
+  sensitive   = true
+}
