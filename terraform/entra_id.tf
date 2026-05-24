@@ -68,19 +68,19 @@ resource "azurerm_role_definition" "custom_role" {
 #   principal_id       = each.value.object_id
 # }
 
-resource "azurerm_user_assigned_identity" "github_identity" {
-  name                = "github-oidc-identity"
-  resource_group_name = azurerm_resource_group.azure_security_rg.name
-  location            = azurerm_resource_group.azure_security_rg.location
-}
+# resource "azurerm_user_assigned_identity" "github_identity" {
+#   name                = "github-oidc-identity"
+#   resource_group_name = azurerm_resource_group.azure_security_rg.name
+#   location            = azurerm_resource_group.azure_security_rg.location
+# }
 
-resource "azurerm_federated_identity_credential" "github_oidc" {
-  name      = "github_actions"
-  # parent_id = azurerm_user_assigned_identity.github_identity.id
-  issuer    = "https://token.actions.githubusercontent.com"
-  audience  = ["api://AzureADTokenExchange"]
-  subject   = "repo:noeleon21/YOUR_REPOSITORY:ref:refs/heads/main"
-}
+# resource "azurerm_federated_identity_credential" "github_oidc" {
+#   name      = "github_actions"
+#   # parent_id = azurerm_user_assigned_identity.github_identity.id
+#   issuer    = "https://token.actions.githubusercontent.com"
+#   audience  = ["api://AzureADTokenExchange"]
+#   subject   = "repo:noeleon21/YOUR_REPOSITORY:ref:refs/heads/main"
+# }
 
 # output "user_map" {
 #   value     = local.user_map

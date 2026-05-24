@@ -37,12 +37,12 @@ resource "random_password" "vm_password" {
   min_special      = 2
 }
 
-# Lock it away in Key Vault — break-glass only
-resource "azurerm_key_vault_secret" "vm_password" {
-  name         = "vm-local-admin-password"
-  value        = random_password.vm_password.result
-  key_vault_id = azurerm_key_vault.kv.id
-}
+# # Lock it away in Key Vault — break-glass only
+# resource "azurerm_key_vault_secret" "vm_password" {
+#   name         = "vm-local-admin-password"
+#   value        = random_password.vm_password.result
+#   key_vault_id = azurerm_key_vault.kv.id
+# }
 
 # AAD login extension — use this for day-to-day access
 resource "azurerm_virtual_machine_extension" "aad_login" {
