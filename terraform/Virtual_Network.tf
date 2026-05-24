@@ -2,6 +2,10 @@
 #   name     = var.resource_group_name
 #   location = "US East"
 # }
+variable "my_ip" {
+  description = "Your public IP for RDP access"
+  type        = string
+}
 
 resource "azurerm_network_security_group" "azure_security_nsg" {
   name                = "azure-security-nsg"
@@ -18,9 +22,10 @@ resource "azurerm_network_security_group" "azure_security_nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "3389"
-    source_address_prefix      = "*"
+    source_address_prefix      = "${var.my_ip}/32"
     destination_address_prefix = "*"
   }
+  
 }
 
 resource "azurerm_virtual_network" "azure_security_vnet" {
