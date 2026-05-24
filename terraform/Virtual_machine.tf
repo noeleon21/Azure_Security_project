@@ -6,8 +6,8 @@ resource "azurerm_windows_virtual_machine" "my_terraform_vm" {
   network_interface_ids = [azurerm_network_interface.network_interface.id]
   size                  = "Standard_B1s"  # Free tier eligible size
 
-  admin_username = var.username
-  admin_password = var.admin_password
+  # admin_username = var.username
+  # admin_password = var.admin_password
 
   os_disk {
     name                 = "myOsDisk"
