@@ -76,7 +76,7 @@ resource "azurerm_user_assigned_identity" "github_identity" {
 
 resource "azurerm_federated_identity_credential" "github_oidc" {
   name      = "github_actions"
-  parent_id = azurerm_user_assigned_identity.github_identity.id
+  # parent_id = azurerm_user_assigned_identity.github_identity.id
   issuer    = "https://token.actions.githubusercontent.com"
   audience  = ["api://AzureADTokenExchange"]
   subject   = "repo:noeleon21/YOUR_REPOSITORY:ref:refs/heads/main"
