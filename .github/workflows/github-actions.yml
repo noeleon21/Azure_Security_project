@@ -45,5 +45,6 @@ jobs:
           ARM_TENANT_ID:          ${{ secrets.AZURE_TENANT_ID }}
           ARM_SUBSCRIPTION_ID:    ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           TF_VAR_users_json_b64:  ${{ secrets.USERS_JSON_B64 }}
-          TF_VAR_my_ip:           ${{ secrets.MY_IP}}
+          TF_VAR_my_ip:           ${{ secrets.MY_IP }}
+
         run: terraform apply -auto-approve
